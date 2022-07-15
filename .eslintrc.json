@@ -11,7 +11,7 @@
         "prettier",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
-        "plugin:jest/all",
+        "plugin:jest/recommended",
         "plugin:testing-library/react"
     ],
     "parser": "@typescript-eslint/parser",

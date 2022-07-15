@@ -47,4 +47,18 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 ## References 
-Jest: https://www.codementor.io/@rajjeet/add-jest-to-your-typescript-project-with-4-easy-steps-1do5lhfjb1
+1 - react com typescript: https://dev.to/christiantld/configurando-um-projeto-react-com-typescript-3kg
+
+2 - commitLint e husk: https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitizen-3g1n
+
+3 - prettier e eslint: https://dev.to/suchintan/reacttypescripteslint-prettier-full-setup-p7j
+
+4 - Jest: https://www.codementor.io/@rajjeet/add-jest-to-your-typescript-project-with-4-easy-steps-1do5lhfjb1
+
+5 - lint Jest: https://github.com/jest-community/eslint-plugin-jest
+
+6 - lint testing-library: https://github.com/testing-library/eslint-plugin-testing-library
+
+7 - styled-components: https://styled-components.com/docs/basics#installation
+
+
