@@ -1,9 +1,11 @@
 const validateEmailForm = (input: string): boolean => {
-  return input.includes('@');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(input);
 };
 
 const validatePasswordForm = (input: string): boolean => {
-  return input.length > 5;
+  const minCharacteres = 5;
+  return input.length >= minCharacteres;
 };
 
 export const validateForm = (email: string, password: string): boolean => {

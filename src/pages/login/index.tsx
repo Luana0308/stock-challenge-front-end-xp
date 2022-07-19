@@ -21,6 +21,7 @@ function LoginPage(): React.ReactElement {
     const input = event.target;
     if (input.type === 'email') {
       setEmail(input.value);
+      localStorage.setItem('email', JSON.stringify(input.value));
     } else {
       setPassword(input.value);
     }
