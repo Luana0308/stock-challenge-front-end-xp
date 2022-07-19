@@ -1,11 +1,20 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { validateForm } from './helper';
 import { requestLogin } from './services';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState<string | undefined>(undefined);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token !== undefined) {
+      navigate('/listAssets');
+    }
+  }, [token, navigate]);
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const input = event.target;
@@ -19,16 +28,8 @@ function LoginPage(): React.ReactElement {
   };
 
   const handleOnClickButton = async (): Promise<void> => {
-    const result = await requestLogin({
-      email,
-      password,
-    });
-
-    if (result.token) {
-      console.log('logou');
-    } else {
-      console.log('n logou');
-    }
+    const result = await requestLogin({ email, password });
+    setToken(result.token);
   };
 
   return (
@@ -52,5 +53,4 @@ function LoginPage(): React.ReactElement {
     </div>
   );
 }
-
 export default LoginPage;
