@@ -13,6 +13,7 @@ function LoginPage(): React.ReactElement {
   useEffect(() => {
     if (token !== undefined) {
       navigate('/listAssets');
+      localStorage.setItem('token', JSON.stringify(token));
     }
   }, [token, navigate]);
 
