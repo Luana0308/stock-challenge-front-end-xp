@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import LoginPage from './pages/login';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './pages/routes/Router';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +9,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <LoginPage />
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   </React.StrictMode>
 );
