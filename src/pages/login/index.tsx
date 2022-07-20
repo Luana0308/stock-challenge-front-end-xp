@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CONSTANTS } from '../../utils/constants';
 import { validateForm } from './helper';
 import { requestLogin } from './services';
 
@@ -12,7 +13,7 @@ function LoginPage(): React.ReactElement {
 
   useEffect(() => {
     if (token !== undefined) {
-      navigate('/listAssets');
+      navigate(CONSTANTS.routes.asset);
       localStorage.setItem('token', JSON.stringify(token));
     }
   }, [token, navigate]);

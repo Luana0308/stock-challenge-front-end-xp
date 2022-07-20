@@ -1,19 +1,20 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Account from '../account';
+import AccountPage from '../account';
 import Home from '../home';
 import AssetsPage from '../Assets';
 import LoginPage from '../login';
-import Investment from '../investment';
+import InvestmentPage from '../investment';
+import { CONSTANTS } from '../../utils/constants';
 
 function Router(): React.ReactElement {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/investment" element={<Investment />} />
-      <Route path="/assets" element={<AssetsPage />} />
+      <Route path={CONSTANTS.routes.login} element={<LoginPage />} />
+      <Route path={CONSTANTS.routes.account} element={<AccountPage />} />
+      <Route path={CONSTANTS.routes.investment} element={<InvestmentPage />} />
+      <Route path={CONSTANTS.routes.asset} element={<AssetsPage />} />
     </Routes>
   );
 }
