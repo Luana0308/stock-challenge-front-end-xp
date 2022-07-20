@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Account from '../account';
 import Home from '../home';
-import ListAssets from '../listAssets';
+import AssetsPage from '../Assets';
 import LoginPage from '../login';
-import MovimentAsset from '../movimentAsset';
+import Investment from '../investment';
 
 function Router(): React.ReactElement {
   return (
@@ -12,8 +12,8 @@ function Router(): React.ReactElement {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/account" element={<Account />} />
-      <Route path="movimentAsset" element={<MovimentAsset />} />
-      <Route path="/listAssets" element={<ListAssets />} />
+      <Route path="/investment" element={<Investment />} />
+      <Route path="/assets" element={<AssetsPage />} />
     </Routes>
   );
 }
