@@ -166,3 +166,5 @@ https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitiz
 </details>
 
 
+https://flaviocopes.com/axios-send-authorization-header/
+
