@@ -150,6 +150,10 @@ https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitiz
  
  https://github.com/jest-community/eslint-plugin-jest
 
+ https://bobbyhadz.com/blog/react-jest-usenavigate-may-only-be-used-in-the-context-of-router#:~:text=The%20jest%20error%20%22useNavigate(),testing%20in%20a%20Router%20context.
+
+ https://bobbyhadz.com/blog/react-cannot-read-property-pathname-of-undefined
+
 <br />
 </details>
 

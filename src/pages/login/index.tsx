@@ -32,6 +32,7 @@ function LoginPage(): React.ReactElement {
 
   const handleOnClickButton = async (): Promise<void> => {
     const result = await requestLogin({ email, password });
+    console.log(result.token);
     setToken(result.token);
   };
 
