@@ -1,5 +1,5 @@
 export interface IAsset {
   nameAsset: string;
-  qtdAsset: number;
+  qtdAssets: number;
   valueAsset: number;
 }
