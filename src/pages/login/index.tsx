@@ -14,9 +14,11 @@ import logo from '../../images/logo.png';
 import finacialLogo from '../../images/finacialLogo.png';
 import { saveClientStorage } from '../../utils/localStorage';
 import { IRequestClientResponse } from './types';
+import Loader from '../../components/Loader';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [clientResponse, setClientResponse] = useState<
     IRequestClientResponse | undefined
@@ -44,6 +46,7 @@ function LoginPage(): React.ReactElement {
   };
 
   const handleOnClickButton = async (): Promise<void> => {
+    setIsLoading(true);
     const result = await requestLogin({ email, password });
     setClientResponse(result);
   };
@@ -77,6 +80,7 @@ function LoginPage(): React.ReactElement {
       <Aside>
         <img src={finacialLogo} alt="logo Finance" />
       </Aside>
+      {isLoading ? <Loader /> : null}
     </Container>
   );
 }

@@ -174,3 +174,5 @@ https://www.digitalocean.com/community/tutorials/react-axios-react
 
 https://www.angularfix.com/2022/01/importing-images-in-typescript-react.html
 
+https://www.npmjs.com/package/react-loading
+
