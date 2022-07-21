@@ -1,45 +1,56 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchAccounClient } from './services';
+import { getUserStorage } from '../../services/localStorage';
+import { CONSTANTS } from '../../utils/constants';
+import { depositMoney, fetchAccounClient, withdrawMoney } from './services';
 import { IClient } from './types';
 
 function AccountPage(): React.ReactElement {
   const [client, setClient] = useState<IClient | undefined>();
-  const getToken = localStorage.getItem('token') ?? '';
-  const convertToken = JSON.parse(getToken);
-  const userId = convertToken.data.id;
-  const { token } = convertToken.data;
+  const [accountBalance, setAccountBalance] = useState<number>(0);
+  const [inputMoney, setInputMoney] = useState<number>(0);
+  const { id } = getUserStorage();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const money = event.target.value;
+  const handleWithdrawButton = async (): Promise<void> => {
+    const response = await withdrawMoney(inputMoney);
+    setAccountBalance(response.valorAtualConta);
   };
 
-  const handleDepositButton = (): void => {
-    // console.log(money);
-    // console.log(valueAccount);
+  const handleDepositButton = async (): Promise<void> => {
+    const response = await depositMoney(inputMoney);
+    setAccountBalance(response.valorAtualConta);
+  };
+
+  const handleInputChange = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>): void => {
+    setInputMoney(Number(value));
   };
 
   useEffect(() => {
     const getFetchClient = async (): Promise<void> => {
-      const response = await fetchAccounClient(userId, token);
+      const response = await fetchAccounClient(id);
       setClient(response);
+      setAccountBalance(response.value);
     };
 
     getFetchClient();
-  }, [userId, token]);
+  }, [id]);
 
   return (
     <main>
       <h1>Estou na pagina de deposito e saque da conta</h1>
       <p>Meu saldo</p>
-      <p>{client?.value}</p>
+      <p>{accountBalance}</p>
       <input onChange={handleInputChange} type="number" placeholder="valor" />
-      <button type="button">Retirada</button>
+      <button type="button" onClick={handleWithdrawButton}>
+        Retirada
+      </button>
       <button onClick={handleDepositButton} type="button">
         Deposito
       </button>
       <br />
-      <Link to="/listAssets">
+      <Link to={CONSTANTS.routes.asset}>
         <button type="button">Voltar</button>
       </Link>
       <button type="button">Confirmar</button>

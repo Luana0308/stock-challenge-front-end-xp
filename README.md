@@ -168,3 +168,9 @@ https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitiz
 
 https://flaviocopes.com/axios-send-authorization-header/
 
+https://stackoverflow.com/questions/43051291/attach-authorization-header-for-all-axios-requests
+
+https://www.digitalocean.com/community/tutorials/react-axios-react
+
+https://www.angularfix.com/2022/01/importing-images-in-typescript-react.html
+

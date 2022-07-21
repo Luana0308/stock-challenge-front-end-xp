@@ -1,17 +1,25 @@
-import axios from 'axios';
-import { CONSTANTS } from '../../utils/constants';
-import { IClient } from './types';
+import api from '../../services/client';
+import { IAccountBalance, IClient } from './types';
 
 const endpoint = `/account`;
 
-export const fetchAccounClient = async (
-  id: number,
-  token: string
-): Promise<IClient> => {
-  const response = await axios.get(`${CONSTANTS.host + endpoint}/${id}`, {
-    headers: {
-      Authorization: `${token}`,
-    },
-  });
+export const fetchAccounClient = async (id: number): Promise<IClient> => {
+  const response = await api.get(`${endpoint}/${id}`);
   return response.data;
+};
+
+export const depositMoney = async (value: number): Promise<IAccountBalance> => {
+  const accountBalance = await api.post(`${endpoint}/deposit`, {
+    value,
+  });
+  return accountBalance.data;
+};
+
+export const withdrawMoney = async (
+  value: number
+): Promise<IAccountBalance> => {
+  const accountBalance = await api.post(`${endpoint}/withdraw`, {
+    value,
+  });
+  return accountBalance.data;
 };
