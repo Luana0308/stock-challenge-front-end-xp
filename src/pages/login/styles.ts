@@ -51,7 +51,7 @@ export const ContentImage = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: calc(100% - 300px);
+    width: calc(100% - 290px);
   }
 `;
 

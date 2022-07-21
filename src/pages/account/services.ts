@@ -1,15 +1,15 @@
-import api from '../../services/client';
+import { getClient } from '../../services/client';
 import { IAccountBalance, IClient } from './types';
 
 const endpoint = `/account`;
 
 export const fetchAccounClient = async (id: number): Promise<IClient> => {
-  const response = await api.get(`${endpoint}/${id}`);
+  const response = await getClient().get(`${endpoint}/${id}`);
   return response.data;
 };
 
 export const depositMoney = async (value: number): Promise<IAccountBalance> => {
-  const accountBalance = await api.post(`${endpoint}/deposit`, {
+  const accountBalance = await getClient().post(`${endpoint}/deposit`, {
     value,
   });
   return accountBalance.data;
@@ -18,7 +18,7 @@ export const depositMoney = async (value: number): Promise<IAccountBalance> => {
 export const withdrawMoney = async (
   value: number
 ): Promise<IAccountBalance> => {
-  const accountBalance = await api.post(`${endpoint}/withdraw`, {
+  const accountBalance = await getClient().post(`${endpoint}/withdraw`, {
     value,
   });
   return accountBalance.data;

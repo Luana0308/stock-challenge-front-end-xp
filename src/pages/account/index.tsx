@@ -1,15 +1,13 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUserStorage } from '../../services/localStorage';
+import { getClientStorage } from '../../utils/localStorage';
 import { CONSTANTS } from '../../utils/constants';
 import { depositMoney, fetchAccounClient, withdrawMoney } from './services';
-import { IClient } from './types';
 
 function AccountPage(): React.ReactElement {
-  const [client, setClient] = useState<IClient | undefined>();
   const [accountBalance, setAccountBalance] = useState<number>(0);
   const [inputMoney, setInputMoney] = useState<number>(0);
-  const { id } = getUserStorage();
+  const { id } = getClientStorage();
 
   const handleWithdrawButton = async (): Promise<void> => {
     const response = await withdrawMoney(inputMoney);
@@ -30,7 +28,6 @@ function AccountPage(): React.ReactElement {
   useEffect(() => {
     const getFetchClient = async (): Promise<void> => {
       const response = await fetchAccounClient(id);
-      setClient(response);
       setAccountBalance(response.value);
     };
 

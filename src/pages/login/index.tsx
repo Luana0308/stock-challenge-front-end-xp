@@ -12,20 +12,24 @@ import {
 } from './styles';
 import logo from '../../images/logo.png';
 import finacialLogo from '../../images/finacialLogo.png';
+import { saveClientStorage } from '../../utils/localStorage';
+import { IRequestClientResponse } from './types';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState<string | undefined>(undefined);
+  const [clientResponse, setClientResponse] = useState<
+    IRequestClientResponse | undefined
+  >(undefined);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token !== undefined) {
+    if (clientResponse !== undefined) {
       navigate(CONSTANTS.routes.asset);
-      localStorage.setItem('token', JSON.stringify(token));
+      saveClientStorage(clientResponse);
     }
-  }, [token, navigate]);
+  }, [clientResponse, navigate]);
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const input = event.target;
@@ -41,7 +45,7 @@ function LoginPage(): React.ReactElement {
 
   const handleOnClickButton = async (): Promise<void> => {
     const result = await requestLogin({ email, password });
-    setToken(result.token);
+    setClientResponse(result);
   };
 
   return (

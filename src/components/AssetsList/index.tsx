@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import ItemAssetsList from '../CItemAssetsList';
+import ItemAssetsList from '../ItemAssetsList';
 import { IListAssetsProps } from './types';
 
 function AssetsList(props: IListAssetsProps): ReactElement {

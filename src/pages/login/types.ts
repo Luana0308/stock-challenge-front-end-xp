@@ -3,9 +3,11 @@ export interface IRequestLoginInput {
   password: string;
 }
 
-export interface IRequestLoginResponse {
-  token?: string;
-  error?: string;
+export interface IRequestClientResponse {
+  data?: {
+    token?: string;
+  };
+  error?: Error;
 }
 
 export interface ITypeInputForm {

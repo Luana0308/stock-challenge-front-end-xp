@@ -1,26 +1,17 @@
-import axios from 'axios';
-import { CONSTANTS } from '../../utils/constants';
-import { IRequestLoginInput, IRequestLoginResponse } from './types';
+import { getClient } from '../../services/client';
+import { IRequestLoginInput, IRequestClientResponse } from './types';
 
 const loginEndpoint = '/login';
 
 export const requestLogin = async (
   input: IRequestLoginInput
-): Promise<IRequestLoginResponse> => {
+): Promise<IRequestClientResponse> => {
   const { email, password } = input;
 
-  const url = CONSTANTS.host + loginEndpoint;
-
-  const response: any = { token: undefined, error: undefined };
-
   try {
-    const token = await axios.post(url, { email, password });
-    response.token = token;
-  } catch (error: any) {
-    response.error = error.message;
+    const response = await getClient().post(loginEndpoint, { email, password });
+    return response.data;
+  } catch (error: unknown) {
+    return { error: error as Error };
   }
-
-  return new Promise((resolve) => {
-    resolve(response);
-  });
 };
