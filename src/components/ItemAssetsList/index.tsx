@@ -4,14 +4,19 @@ import { IItemListAssetsProps } from './types';
 
 function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
   const { onBuyPress, onSellPress, asset } = props;
+  console.log(props);
   const { nameAsset, qtdAssets, valueAsset } = asset;
 
   const handleBuyPressButon = (): void => {
-    onBuyPress({ nameAsset, qtdAssets, valueAsset });
+    if (onBuyPress) {
+      onBuyPress(asset);
+    }
   };
 
   const handleSellPressButon = (): void => {
-    onSellPress({ nameAsset, qtdAssets, valueAsset });
+    if (onSellPress) {
+      onSellPress(asset);
+    }
   };
 
   return (
@@ -25,16 +30,20 @@ function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
       <ItemContainer>
         <p>{valueAsset}</p>
       </ItemContainer>
-      <ItemContainer>
-        <button onClick={handleBuyPressButon} type="button">
-          Comprar
-        </button>
-      </ItemContainer>
-      <ItemContainer>
-        <button onClick={handleSellPressButon} type="button">
-          Vender
-        </button>
-      </ItemContainer>
+      {onBuyPress && (
+        <ItemContainer>
+          <button onClick={handleBuyPressButon} type="button">
+            Comprar
+          </button>
+        </ItemContainer>
+      )}
+      {onSellPress && (
+        <ItemContainer>
+          <button onClick={handleSellPressButon} type="button">
+            Vender
+          </button>
+        </ItemContainer>
+      )}
     </Container>
   );
 }

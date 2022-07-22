@@ -1,9 +1,8 @@
-import axios from 'axios';
+import { getClient } from '../../services/client';
 import { IAsset } from '../../types';
-import { CONSTANTS } from '../../utils/constants';
 
 const endpoint = '/assets';
 export const fetchStoreAssets = async (): Promise<IAsset[]> => {
-  const response = await axios.get(CONSTANTS.host + endpoint);
+  const response = await getClient()(endpoint);
   return response.data;
 };

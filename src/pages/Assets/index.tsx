@@ -15,7 +15,10 @@ function AssetsPage(): React.ReactElement {
   };
 
   const onBuyPress = (asset: IAsset): void => {
-    navigation(CONSTANTS.routes.investment);
+    console.log(asset);
+    navigation(CONSTANTS.routes.investment, {
+      state: asset,
+    });
   };
   const onSellPress = (asset: IAsset): void => {
     navigation(CONSTANTS.routes.investment);
