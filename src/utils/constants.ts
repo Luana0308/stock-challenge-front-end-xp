@@ -9,5 +9,6 @@ export const CONSTANTS = {
   endpoints: {
     sell: '/investments/sell',
     buy: 'investments/buy',
+    myAsset: 'assets/client',
   },
 };

@@ -10,7 +10,7 @@ function AssetsList(props: IListAssetsProps): ReactElement {
       {list.map((item) => {
         return (
           <ItemAssetsList
-            key={item.nameAsset}
+            key={item.id}
             asset={item}
             onBuyPress={onBuyPress}
             onSellPress={onSellPress}

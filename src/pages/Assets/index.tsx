@@ -3,15 +3,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
-import { fetchStoreAssets } from './services';
+import { getClientStorage } from '../../utils/localStorage';
+import { convertAsset } from './helpers';
+import { fetchAssetByClientId, fetchStoreAssets } from './services';
+import { IAssetClient } from './types';
 
 function AssetsPage(): React.ReactElement {
   const navigation = useNavigate();
   const [assets, setAssets] = useState<IAsset[]>([]);
+  const [myAssets, setMyAssets] = useState<IAssetClient[]>([]);
 
   const fetchAssets = async (): Promise<void> => {
     const response = await fetchStoreAssets();
     setAssets(response);
+  };
+
+  const fetchMyAssets = async (): Promise<void> => {
+    const id = getClientStorage()?.id;
+    if (id) {
+      const response = await fetchAssetByClientId({ id });
+      setMyAssets(response.data);
+    }
   };
 
   const navigateToInvesment = (asset: IAsset): void => {
@@ -29,12 +41,16 @@ function AssetsPage(): React.ReactElement {
 
   useEffect(() => {
     fetchAssets();
+    fetchMyAssets();
   }, []);
 
   return (
     <main>
       <h1>Estou na pagina de lista das acoes minhas e acoes para comprar</h1>
       <h2>Minhas açõses</h2>
+      {myAssets && (
+        <AssetsList list={convertAsset(myAssets)} onSellPress={onSellPress} />
+      )}
       <h2>Açoes da Xp</h2>
       {assets && (
         <AssetsList
