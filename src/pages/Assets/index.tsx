@@ -56,11 +56,9 @@ function AssetsPage(): React.ReactElement {
       )}
       <h2>Açoes da Xp</h2>
       {assets && (
-        <AssetsList
-          list={assets}
-          onBuyPress={onBuyPress}
-          onSellPress={onSellPress}
-        />
+        <Card>
+          <AssetsList list={assets} onBuyPress={onBuyPress} />
+        </Card>
       )}
       <Link to={CONSTANTS.routes.account}>
         <button type="button">Deposito/Retirada</button>
