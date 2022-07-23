@@ -4,8 +4,7 @@ import { IItemListAssetsProps } from './types';
 
 function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
   const { onBuyPress, onSellPress, asset } = props;
-  console.log(props);
-  const { nameAsset, qtdAssets, valueAsset } = asset;
+  const { nameAsset, quantityAsset, valueAsset, codAsset } = asset;
 
   const handleBuyPressButon = (): void => {
     if (onBuyPress) {
@@ -25,7 +24,10 @@ function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
         <p>{nameAsset}</p>
       </ItemContainer>
       <ItemContainer>
-        <p>{qtdAssets}</p>
+        <p>{quantityAsset}</p>
+      </ItemContainer>
+      <ItemContainer>
+        <p>{codAsset}</p>
       </ItemContainer>
       <ItemContainer>
         <p>{valueAsset}</p>

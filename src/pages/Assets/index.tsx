@@ -14,14 +14,17 @@ function AssetsPage(): React.ReactElement {
     setAssets(response);
   };
 
-  const onBuyPress = (asset: IAsset): void => {
-    console.log(asset);
+  const navigateToInvesment = (asset: IAsset): void => {
     navigation(CONSTANTS.routes.investment, {
       state: asset,
     });
   };
+
+  const onBuyPress = (asset: IAsset): void => {
+    navigateToInvesment(asset);
+  };
   const onSellPress = (asset: IAsset): void => {
-    navigation(CONSTANTS.routes.investment);
+    navigateToInvesment(asset);
   };
 
   useEffect(() => {

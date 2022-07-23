@@ -7,7 +7,7 @@ import { depositMoney, fetchAccounClient, withdrawMoney } from './services';
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
   const [inputMoney, setInputMoney] = useState<number>(0);
-  const { id } = getClientStorage();
+  const id = getClientStorage()?.id;
 
   const handleWithdrawButton = async (): Promise<void> => {
     const response = await withdrawMoney(inputMoney);
@@ -27,8 +27,10 @@ function AccountPage(): React.ReactElement {
 
   useEffect(() => {
     const getFetchClient = async (): Promise<void> => {
-      const response = await fetchAccounClient(id);
-      setAccountBalance(response.value);
+      if (id) {
+        const response = await fetchAccounClient(id);
+        setAccountBalance(response.value);
+      }
     };
 
     getFetchClient();

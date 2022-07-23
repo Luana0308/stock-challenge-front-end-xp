@@ -1,6 +1,7 @@
 export interface IAsset {
   id: number;
   nameAsset: string;
-  qtdAssets: number;
+  codAsset: string;
+  quantityAsset: number;
   valueAsset: number;
 }

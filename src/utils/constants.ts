@@ -4,6 +4,10 @@ export const CONSTANTS = {
     login: '/login',
     asset: '/assets',
     account: '/account',
-    investment: '/investment',
+    investment: '/wallet',
+  },
+  endpoints: {
+    sell: '/investments/sell',
+    buy: 'investments/buy',
   },
 };
