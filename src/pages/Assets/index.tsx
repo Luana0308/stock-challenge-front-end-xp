@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
+import Box from '../../components/Box';
 import { Card } from '../../components/Card';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
@@ -50,15 +51,22 @@ function AssetsPage(): React.ReactElement {
       <h1>Estou na pagina de lista das acoes minhas e acoes para comprar</h1>
       <h2>Minhas açõses</h2>
       {myAssets && (
-        <Card>
-          <AssetsList list={convertAsset(myAssets)} onSellPress={onSellPress} />
-        </Card>
+        <Box width={60} minWidth={540}>
+          <Card data-testId="oi">
+            <AssetsList
+              list={convertAsset(myAssets)}
+              onSellPress={onSellPress}
+            />
+          </Card>
+        </Box>
       )}
       <h2>Açoes da Xp</h2>
       {assets && (
-        <Card>
-          <AssetsList list={assets} onBuyPress={onBuyPress} />
-        </Card>
+        <Box width={60} minWidth={540}>
+          <Card>
+            <AssetsList list={assets} onBuyPress={onBuyPress} />
+          </Card>
+        </Box>
       )}
       <Link to={CONSTANTS.routes.account}>
         <button type="button">Deposito/Retirada</button>

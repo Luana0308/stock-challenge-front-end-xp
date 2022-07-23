@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
-import { Container, ItemContainer } from './styles';
+import ItemContainer from '../ItemContainer';
+import { Container } from './styles';
 import { IItemListAssetsProps } from './types';
 
 function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
@@ -20,31 +21,15 @@ function ItemAssetsList(props: IItemListAssetsProps): ReactElement {
 
   return (
     <Container>
-      <ItemContainer>
-        <p>{nameAsset}</p>
-      </ItemContainer>
-      <ItemContainer>
-        <p>{quantityAsset}</p>
-      </ItemContainer>
-      <ItemContainer>
-        <p>{codAsset}</p>
-      </ItemContainer>
-      <ItemContainer>
-        <p>{valueAsset}</p>
-      </ItemContainer>
+      <ItemContainer title={nameAsset} />
+      <ItemContainer title={quantityAsset} />
+      <ItemContainer title={codAsset} />
+      <ItemContainer title={valueAsset} />
       {onBuyPress && (
-        <ItemContainer>
-          <button onClick={handleBuyPressButon} type="button">
-            Comprar
-          </button>
-        </ItemContainer>
+        <ItemContainer onClick={handleBuyPressButon} button="Comprar" />
       )}
       {onSellPress && (
-        <ItemContainer>
-          <button onClick={handleSellPressButon} type="button">
-            Vender
-          </button>
-        </ItemContainer>
+        <ItemContainer onClick={handleSellPressButon} button="Vender" />
       )}
     </Container>
   );
