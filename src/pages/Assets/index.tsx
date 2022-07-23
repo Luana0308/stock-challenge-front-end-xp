@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
+import { Card } from '../../components/Card';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 import { getClientStorage } from '../../utils/localStorage';
@@ -45,11 +46,13 @@ function AssetsPage(): React.ReactElement {
   }, []);
 
   return (
-    <main>
+    <main style={{ backgroundColor: '#f8f9fa' }}>
       <h1>Estou na pagina de lista das acoes minhas e acoes para comprar</h1>
       <h2>Minhas açõses</h2>
       {myAssets && (
-        <AssetsList list={convertAsset(myAssets)} onSellPress={onSellPress} />
+        <Card>
+          <AssetsList list={convertAsset(myAssets)} onSellPress={onSellPress} />
+        </Card>
       )}
       <h2>Açoes da Xp</h2>
       {assets && (

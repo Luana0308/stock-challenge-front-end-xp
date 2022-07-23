@@ -17,7 +17,6 @@ function AssetsList(props: IListAssetsProps): ReactElement {
           />
         );
       })}
-      ;
     </div>
   );
 }
