@@ -2,19 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   background-color: #e0fbfc;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
 `;
 
 export const ContentForm = styled.div`
-  min-width: 40%;
   width: 40%;
   height: 100%;
   background-color: #3d5a80;
   border: 2px solid #3d5a80;
-  border-radius: 50px 50px 50px 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,16 +40,14 @@ export const ContentForm = styled.div`
   }
 `;
 
-export const ContentImage = styled.div`
-  width: 100%;
+export const Aside = styled.div`
+  width: 60%;
   height: 100%;
   display: flex;
-  margin-top: 15%;
-  margin-bottom: 10%;
   justify-content: center;
   align-items: center;
   img {
-    width: calc(100% - 290px);
+    width: calc(100% - 230px);
   }
 `;
 
@@ -71,21 +67,4 @@ export const MainButton = styled.button`
     background-color: #89b0ae;
     color: #000814;
   }
-`;
-
-export const Aside = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: calc(100% - 230px);
-  }
-`;
-
-export const ContainerButton = styled.div`
-  display: flex-box;
-  align-itens: center;
-  width: 100px;
 `;

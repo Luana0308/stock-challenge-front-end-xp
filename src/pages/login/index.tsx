@@ -3,18 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { CONSTANTS } from '../../utils/constants';
 import { validateForm } from './helper';
 import { requestLogin } from './services';
-import {
-  Aside,
-  Container,
-  ContentForm,
-  ContentImage,
-  MainButton,
-} from './styles';
-import logo from '../../images/logo.png';
+import { Aside, Container, ContentForm, MainButton } from './styles';
 import finacialLogo from '../../images/finacialLogo.png';
 import { saveClientStorage } from '../../utils/localStorage';
 import { IRequestClientResponse } from './types';
 import Loader from '../../components/Loader';
+import { Card } from '../../components/Card';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
@@ -54,28 +48,28 @@ function LoginPage(): React.ReactElement {
   return (
     <Container>
       <ContentForm>
-        <form>
-          <ContentImage>
-            <img src={logo} alt="logo Finance" />
-          </ContentImage>
-          <input
-            type="email"
-            onChange={handleChangeInput}
-            placeholder="e-mail"
-          />
-          <input
-            type="password"
-            placeholder="senha"
-            onChange={handleChangeInput}
-          />
-          <MainButton
-            type="button"
-            onClick={handleOnClickButton}
-            disabled={buttonDisabled}
-          >
-            Entrar
-          </MainButton>
-        </form>
+        <Card style={{ marginTop: '35%' }}>
+          <form>
+            <h1>login</h1>
+            <input
+              type="email"
+              onChange={handleChangeInput}
+              placeholder="e-mail"
+            />
+            <input
+              type="password"
+              placeholder="senha"
+              onChange={handleChangeInput}
+            />
+            <MainButton
+              type="button"
+              onClick={handleOnClickButton}
+              disabled={buttonDisabled}
+            >
+              Entrar
+            </MainButton>
+          </form>
+        </Card>
       </ContentForm>
       <Aside>
         <img src={finacialLogo} alt="logo Finance" />

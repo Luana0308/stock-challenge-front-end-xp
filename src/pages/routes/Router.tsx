@@ -10,8 +10,8 @@ import { CONSTANTS } from '../../utils/constants';
 function Router(): React.ReactElement {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path={CONSTANTS.routes.login} element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
+      {/* <Route path={CONSTANTS.routes.login} element={<LoginPage />} /> */}
       <Route path={CONSTANTS.routes.account} element={<AccountPage />} />
       <Route path={CONSTANTS.routes.investment} element={<WalletPage />} />
       <Route path={CONSTANTS.routes.asset} element={<AssetsPage />} />
