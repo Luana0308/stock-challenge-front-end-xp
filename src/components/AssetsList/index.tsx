@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Divider } from '@mui/material';
 import AssetsHeader from '../AssetsHeader';
 import ItemAssetsList from '../ItemAssetsList';
 import { IListAssetsProps } from './types';
@@ -18,6 +19,7 @@ function AssetsList(props: IListAssetsProps): ReactElement {
               onBuyPress={onBuyPress}
               onSellPress={onSellPress}
             />
+            <Divider />
           </div>
         );
       })}

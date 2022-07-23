@@ -5,5 +5,4 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: #eed2cc;
 `;
