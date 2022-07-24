@@ -5,11 +5,11 @@ import ItemAssetsList from '../ItemAssetsList';
 import { IListAssetsProps } from './types';
 
 function AssetsList(props: IListAssetsProps): ReactElement {
-  const { list, onBuyPress, onSellPress } = props;
+  const { list, headers, onBuyPress, onSellPress } = props;
 
   return (
     <div>
-      <AssetsHeader />
+      <AssetsHeader headers={headers} />
       {list.map((item) => {
         return (
           <div>

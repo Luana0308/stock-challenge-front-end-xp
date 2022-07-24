@@ -1,15 +1,14 @@
 import React, { ReactElement } from 'react';
 import ItemContainer from '../ItemContainer';
 import { Header } from './styles';
+import { IAssetHeaderProps } from './types';
 
-function AssetsHeader(): ReactElement {
+function AssetsHeader(props: IAssetHeaderProps): ReactElement {
+  const { headers } = props;
   return (
     <Header>
-      <ItemContainer title="Nome" />
-      <ItemContainer title="Quantidade" />
-      <ItemContainer title="Codigo" />
-      <ItemContainer title="Preço" />
-      <ItemContainer title="Negociar" />
+      {headers &&
+        headers?.map((header) => <ItemContainer key={header} title={header} />)}
     </Header>
   );
 }

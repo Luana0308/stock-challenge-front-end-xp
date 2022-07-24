@@ -8,12 +8,19 @@ import {
 import { IInputProps } from './types';
 
 function InputText(props: IInputProps): ReactElement {
-  const { leftIcon, rigthIcon, showRigthIcon, onChange, placeholder, type } =
-    props;
+  const {
+    leftIcon,
+    rigthIcon,
+    showRigthIcon,
+    onChange,
+    placeholder,
+    type,
+    width,
+  } = props;
 
   return (
-    <Container>
-      <ContainerLeftIcon>{leftIcon}</ContainerLeftIcon>
+    <Container width={width}>
+      {leftIcon && <ContainerLeftIcon>{leftIcon}</ContainerLeftIcon>}
       <Input placeholder={placeholder} onChange={onChange} type={type} />
       {showRigthIcon && <ContainerRigthIcon>{rigthIcon}</ContainerRigthIcon>}
     </Container>

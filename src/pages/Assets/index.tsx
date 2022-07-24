@@ -4,7 +4,7 @@ import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
 import { Card } from '../../components/Card';
 import Navbar from '../../components/NavBar';
-import TitlePages from '../../components/Title';
+import TitlePage from '../../components/TitlePage';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 import { getClientStorage } from '../../utils/localStorage';
@@ -16,8 +16,6 @@ function AssetsPage(): React.ReactElement {
   const navigation = useNavigate();
   const [assets, setAssets] = useState<IAsset[]>([]);
   const [myAssets, setMyAssets] = useState<IAssetClient[]>([]);
-  const titleMyAssets = 'Minhas Ações';
-  const titleAssetsBroker = 'Açoes da Invest Money';
 
   const fetchAssets = async (): Promise<void> => {
     const response = await fetchStoreAssets();
@@ -53,18 +51,19 @@ function AssetsPage(): React.ReactElement {
   return (
     <main style={{ backgroundColor: '#f8f9fa' }}>
       <Navbar />
-      <TitlePages>{titleMyAssets}</TitlePages>
+      <TitlePage text="Minhas Ações" />
       {myAssets && (
         <Box width={60} minWidth={540}>
           <Card>
             <AssetsList
               list={convertAsset(myAssets)}
               onSellPress={onSellPress}
+              headers={['Nome', 'Quantidade', 'Código', 'Preço', 'Negociar']}
             />
           </Card>
         </Box>
       )}
-      <TitlePages>{titleAssetsBroker}</TitlePages>
+      <TitlePage text="Açoes da Invest Money" />
       {assets && (
         <Box width={60} minWidth={540}>
           <Card>

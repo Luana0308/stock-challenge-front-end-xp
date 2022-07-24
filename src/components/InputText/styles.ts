@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IContainerProps } from './types';
 
 export const Input = styled.input`
   width: 100%;
@@ -15,7 +16,7 @@ export const Input = styled.input`
 
 export const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: ${(props: IContainerProps) => (props.width ? props.width : 100)}%;
   border-radius: 4px;
   border: 2px solid #adb5bd;
   margin-bottom: 4px;

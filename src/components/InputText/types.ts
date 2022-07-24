@@ -1,10 +1,15 @@
 import { ChangeEvent, ReactElement } from 'react';
 
 export interface IInputProps {
-  leftIcon: ReactElement;
+  leftIcon?: ReactElement;
   rigthIcon?: ReactElement;
   showRigthIcon?: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   type: string;
+  width?: number;
+}
+
+export interface IContainerProps {
+  width?: number;
 }

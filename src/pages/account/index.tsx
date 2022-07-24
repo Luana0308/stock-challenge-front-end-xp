@@ -8,7 +8,7 @@ import InputText from '../../components/InputText';
 import Tabs from '../../components/Tab';
 import { Button } from '../../components/Button';
 import { EActionButton } from './types';
-import { TitlePage } from '../../components/Title/styles';
+import TitlePage from '../../components/TitlePage';
 import { CONSTANTS } from '../../utils/constants';
 
 function AccountPage(): React.ReactElement {
@@ -71,7 +71,7 @@ function AccountPage(): React.ReactElement {
         }}
       >
         <Tabs onChangeTab={onChangeTab} />
-        <TitlePage>{CONSTANTS.texts.account.title}</TitlePage>
+        <TitlePage text={CONSTANTS.texts.account.title} />
         <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
           R$ {accountBalance}
         </h2>
