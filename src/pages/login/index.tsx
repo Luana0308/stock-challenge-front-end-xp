@@ -6,13 +6,14 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { CONSTANTS } from '../../utils/constants';
 import { validateForm } from './helper';
 import { requestLogin } from './services';
-import { Aside, Container, ContentForm, MainButton } from './styles';
+import { Aside, Container, ContentForm } from './styles';
 import finacialLogo from '../../images/finacialLogo.png';
 import { saveClientStorage } from '../../utils/localStorage';
 import { IRequestClientResponse } from './types';
 import Loader from '../../components/Loader';
 import { Card } from '../../components/Card';
 import InputText from '../../components/InputText';
+import { Button } from '../../components/Button';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
@@ -21,12 +22,14 @@ function LoginPage(): React.ReactElement {
   const [clientResponse, setClientResponse] = useState<
     IRequestClientResponse | undefined
   >(undefined);
-  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(
+    !validateForm(email, password)
+  );
   const [loginError, setLoginError] = useState<boolean>(false);
-  const navigate = useNavigate();
   const leftInputIcon = <PersonOutlineIcon color="action" />;
   const leftPasswordIcon = <LockOpenIcon color="action" />;
   const rigthInputIcon = <ErrorOutlineIcon sx={{ color: 'red' }} />;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (clientResponse !== undefined) {
@@ -39,7 +42,6 @@ function LoginPage(): React.ReactElement {
     const input = event.target;
     if (input.type === 'email') {
       setEmail(input.value);
-      localStorage.setItem('email', JSON.stringify(input.value));
     } else {
       setPassword(input.value);
     }
@@ -58,6 +60,7 @@ function LoginPage(): React.ReactElement {
       setIsLoading(false);
     }
     if (result.token && result.id) {
+      setLoginError(false);
       setClientResponse(result);
     }
   };
@@ -65,7 +68,7 @@ function LoginPage(): React.ReactElement {
   return (
     <Container>
       <ContentForm>
-        <Card style={{ marginTop: '35%' }}>
+        <Card style={{ marginTop: '40%', minWidth: '70%' }}>
           <form>
             <h1>login</h1>
             <InputText
@@ -84,13 +87,17 @@ function LoginPage(): React.ReactElement {
               onChange={handleChangeInput}
               showRigthIcon={loginError}
             />
-            <MainButton
+            {loginError && (
+              <p style={{ color: 'red' }}>
+                Desculpe, seu usuário ou senha estão incorretos
+              </p>
+            )}
+            <Button
               onClick={handleOnClickButton}
               disabled={buttonDisabled}
               type="button"
-            >
-              Entrar
-            </MainButton>
+              title="Entrar"
+            />
           </form>
         </Card>
       </ContentForm>

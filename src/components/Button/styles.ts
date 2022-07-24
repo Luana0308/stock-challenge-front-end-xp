@@ -9,4 +9,7 @@ export const ButtonStyled = styled.button`
   border-radius: 5px;
   margin: 10px 10px;
   cursor: pointer;
+  :hover {
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
+  }
 `;

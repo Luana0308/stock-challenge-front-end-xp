@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
+import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
@@ -48,8 +49,7 @@ function AssetsPage(): React.ReactElement {
 
   return (
     <main style={{ backgroundColor: '#f8f9fa' }}>
-      <h1>Estou na pagina de lista das acoes minhas e acoes para comprar</h1>
-      <h2>Minhas açõses</h2>
+      <h2>Minhas ações</h2>
       {myAssets && (
         <Box width={60} minWidth={540}>
           <Card data-testId="oi">
@@ -69,7 +69,7 @@ function AssetsPage(): React.ReactElement {
         </Box>
       )}
       <Link to={CONSTANTS.routes.account}>
-        <button type="button">Deposito/Retirada</button>
+        <Button type="button" title="Deposito/Retirada" />
       </Link>
     </main>
   );
