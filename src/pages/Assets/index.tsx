@@ -53,7 +53,7 @@ function AssetsPage(): React.ReactElement {
       <Navbar />
       <TitlePage text="Minhas Ações" />
       {myAssets && (
-        <Box width={60} minWidth={540}>
+        <Box width={60} minWidth={540} margin="2% 20% 4% 20%">
           <Card>
             <AssetsList
               list={convertAsset(myAssets)}
@@ -65,9 +65,13 @@ function AssetsPage(): React.ReactElement {
       )}
       <TitlePage text="Açoes da Invest Money" />
       {assets && (
-        <Box width={60} minWidth={540}>
+        <Box width={60} minWidth={540} margin="2% 20% 4% 20%">
           <Card>
-            <AssetsList list={assets} onBuyPress={onBuyPress} />
+            <AssetsList
+              list={assets}
+              onBuyPress={onBuyPress}
+              headers={['Nome', 'Quantidade', 'Código', 'Preço', 'Negociar']}
+            />
           </Card>
         </Box>
       )}

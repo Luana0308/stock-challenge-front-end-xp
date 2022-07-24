@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
 import { Button } from '../../components/Button';
@@ -8,7 +8,6 @@ import InputText from '../../components/InputText';
 import Navbar from '../../components/NavBar';
 import TitlePage from '../../components/TitlePage';
 import { IAsset } from '../../types';
-import { CONSTANTS } from '../../utils/constants';
 import { buyAssetClient, fetchAssetById, sellAssetClient } from './service';
 import { ILocationInvesmentPage } from './types';
 
@@ -51,7 +50,7 @@ function WalletPage(): React.ReactElement {
   return (
     <main style={{ backgroundColor: '#f8f9fa', height: '100vh' }}>
       <Navbar />
-      <Box height={50} width={60} minWidth={20}>
+      <Box height={50} width={60} minWidth={20} margin="2% 20% 4% 20%">
         <div>
           <TitlePage text="Carteira" />
           {asset ? (

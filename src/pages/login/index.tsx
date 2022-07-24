@@ -15,6 +15,7 @@ import { Card } from '../../components/Card';
 import InputText from '../../components/InputText';
 import { Button } from '../../components/Button';
 import TitlePage from '../../components/TitlePage';
+import Box from '../../components/Box';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
@@ -69,38 +70,40 @@ function LoginPage(): React.ReactElement {
   return (
     <Container>
       <ContentForm>
-        <Card style={{ marginTop: '40%', minWidth: '70%' }}>
-          <form>
-            <TitlePage text="Invest Money" />
-            <InputText
-              type="email"
-              placeholder="digite seu email"
-              leftIcon={leftInputIcon}
-              rigthIcon={rigthInputIcon}
-              onChange={handleChangeInput}
-              showRigthIcon={loginError}
-            />
-            <InputText
-              type="password"
-              leftIcon={leftPasswordIcon}
-              rigthIcon={rigthInputIcon}
-              placeholder="digite sua senha"
-              onChange={handleChangeInput}
-              showRigthIcon={loginError}
-            />
-            {loginError && (
-              <p style={{ color: 'red' }}>
-                Desculpe, seu usuário ou senha estão incorretos
-              </p>
-            )}
-            <Button
-              onClick={handleOnClickButton}
-              disabled={buttonDisabled}
-              type="button"
-              title="Entrar"
-            />
-          </form>
-        </Card>
+        <Box margin="30%" height={40} width={55} minWidth={20}>
+          <Card>
+            <form>
+              <TitlePage text="Invest Money" />
+              <InputText
+                type="email"
+                placeholder="digite seu email"
+                leftIcon={leftInputIcon}
+                rigthIcon={rigthInputIcon}
+                onChange={handleChangeInput}
+                showRigthIcon={loginError}
+              />
+              <InputText
+                type="password"
+                leftIcon={leftPasswordIcon}
+                rigthIcon={rigthInputIcon}
+                placeholder="digite sua senha"
+                onChange={handleChangeInput}
+                showRigthIcon={loginError}
+              />
+              {loginError && (
+                <p style={{ color: 'red' }}>
+                  Desculpe, seu usuário ou senha estão incorretos
+                </p>
+              )}
+              <Button
+                onClick={handleOnClickButton}
+                disabled={buttonDisabled}
+                type="button"
+                title="Entrar"
+              />
+            </form>
+          </Card>
+        </Box>
       </ContentForm>
       <Aside>
         <img src={finacialLogo} alt="logo Finance" />

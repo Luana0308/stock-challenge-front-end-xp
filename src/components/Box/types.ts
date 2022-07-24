@@ -6,6 +6,7 @@ export interface IBox {
   minWidth: number;
   height?: number;
   minHeight?: number;
+  margin?: string;
 }
 
 export interface IBoxCardStyled {
@@ -13,4 +14,5 @@ export interface IBoxCardStyled {
   minWidth: number;
   height?: number;
   minHeight?: number;
+  margin?: string;
 }
