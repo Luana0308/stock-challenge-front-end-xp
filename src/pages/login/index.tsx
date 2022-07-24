@@ -50,6 +50,9 @@ function LoginPage(): React.ReactElement {
   const handleOnClickButton = async (): Promise<void> => {
     setIsLoading(true);
     const result = await requestLogin({ email, password });
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((f) => setTimeout(f, 1000));
+
     if (result?.error?.response?.status === 401) {
       setLoginError(true);
       setIsLoading(false);
