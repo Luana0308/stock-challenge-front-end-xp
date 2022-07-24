@@ -1,5 +1,8 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { CONSTANTS } from '../../utils/constants';
 import { validateForm } from './helper';
 import { requestLogin } from './services';
@@ -9,6 +12,7 @@ import { saveClientStorage } from '../../utils/localStorage';
 import { IRequestClientResponse } from './types';
 import Loader from '../../components/Loader';
 import { Card } from '../../components/Card';
+import InputText from '../../components/InputText';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
@@ -17,8 +21,12 @@ function LoginPage(): React.ReactElement {
   const [clientResponse, setClientResponse] = useState<
     IRequestClientResponse | undefined
   >(undefined);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+  const [loginError, setLoginError] = useState<boolean>(false);
   const navigate = useNavigate();
+  const leftInputIcon = <PersonOutlineIcon color="action" />;
+  const leftPasswordIcon = <LockOpenIcon color="action" />;
+  const rigthInputIcon = <ErrorOutlineIcon sx={{ color: 'red' }} />;
 
   useEffect(() => {
     if (clientResponse !== undefined) {
@@ -42,7 +50,13 @@ function LoginPage(): React.ReactElement {
   const handleOnClickButton = async (): Promise<void> => {
     setIsLoading(true);
     const result = await requestLogin({ email, password });
-    setClientResponse(result);
+    if (result?.error?.response?.status === 401) {
+      setLoginError(true);
+      setIsLoading(false);
+    }
+    if (result?.token && result?.id) {
+      setClientResponse(result);
+    }
   };
 
   return (
@@ -51,20 +65,26 @@ function LoginPage(): React.ReactElement {
         <Card style={{ marginTop: '35%' }}>
           <form>
             <h1>login</h1>
-            <input
+            <InputText
               type="email"
+              placeholder="digite seu email"
+              leftIcon={leftInputIcon}
+              rigthIcon={rigthInputIcon}
               onChange={handleChangeInput}
-              placeholder="e-mail"
+              showRigthIcon={loginError}
             />
-            <input
+            <InputText
               type="password"
-              placeholder="senha"
+              leftIcon={leftPasswordIcon}
+              rigthIcon={rigthInputIcon}
+              placeholder="digite sua senha"
               onChange={handleChangeInput}
+              showRigthIcon={loginError}
             />
             <MainButton
-              type="button"
               onClick={handleOnClickButton}
               disabled={buttonDisabled}
+              type="button"
             >
               Entrar
             </MainButton>

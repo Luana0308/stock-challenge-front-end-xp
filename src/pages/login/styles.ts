@@ -23,20 +23,6 @@ export const ContentForm = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    input {
-      width: 50%;
-      align-items: center;
-      height: 30px;
-      margin-bottom: 5px;
-      margin: 5px 0 10px;
-      outline: none;
-      border: 2px solid #e0fbfc;
-      border-radius: 50px;
-      color: #000814;
-      font-size: 15px;
-      padding-left: 20px;
-      transition: all 0.4s ease-in-out;
-    }
   }
 `;
 
