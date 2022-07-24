@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import AlertError from '../../components/AlertError';
 import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
 import { Button } from '../../components/Button';
@@ -16,6 +17,7 @@ function WalletPage(): React.ReactElement {
   const [asset, setAsset] = useState<IAsset | undefined>();
   const [sellInputValue, setSellInputValue] = useState<number>(0);
   const location = useLocation() as ILocationInvesmentPage;
+  const [showError, setShowError] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const updateAsset = async (): Promise<void> => {
@@ -41,11 +43,19 @@ function WalletPage(): React.ReactElement {
   };
   const handleOnClickBuy = async (): Promise<void> => {
     if (asset) {
-      await buyAssetClient({
+      const response = await buyAssetClient({
         idAsset: asset.id,
         quantityAsset: sellInputValue,
       });
+
+      if (response.message) {
+        setShowError(response.message);
+      }
     }
+  };
+
+  const handleOnCloseError = (): void => {
+    setShowError(undefined);
   };
 
   return (
@@ -53,7 +63,7 @@ function WalletPage(): React.ReactElement {
       <Navbar />
       <Box height={50} width={60} minWidth={20} margin="2% 20% 4% 20%">
         <div>
-          <TitlePage text="Carteira" />
+          <TitlePage text="Corretora" />
           {asset ? (
             <Card>
               <div>
@@ -88,6 +98,12 @@ function WalletPage(): React.ReactElement {
                     onClick={handleOnClickSell}
                   />
                 </div>
+                {showError && (
+                  <AlertError
+                    message={showError}
+                    onCloseButton={handleOnCloseError}
+                  />
+                )}
               </div>
             </Card>
           ) : (

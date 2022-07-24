@@ -26,6 +26,7 @@ export interface IWallet {
 export interface IWalletSellBodyResponse {
   data: IWallet;
   status: number;
+  message?: string;
 }
 
 export interface IWalletBuyBodyRequest {
@@ -36,4 +37,5 @@ export interface IWalletBuyBodyRequest {
 export interface IWalletBuyBodyResponse {
   data: IWallet;
   status: number;
+  message?: string;
 }

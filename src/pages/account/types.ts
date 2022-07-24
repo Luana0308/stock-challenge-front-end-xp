@@ -14,4 +14,5 @@ export interface IAccountBalance {
   nome: string;
   valor: number;
   valorAtualConta: number;
+  message?: string;
 }

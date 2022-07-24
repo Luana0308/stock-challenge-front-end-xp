@@ -11,6 +11,8 @@ import { EActionButton } from './types';
 import TitlePage from '../../components/TitlePage';
 import { CONSTANTS } from '../../utils/constants';
 import Loader from '../../components/Loader';
+import { roundTwoDecimals } from './helper';
+import AlertError from '../../components/AlertError';
 
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
@@ -20,9 +22,15 @@ function AccountPage(): React.ReactElement {
   const [currentButton, setActionButton] = useState<EActionButton>(
     EActionButton.Buy
   );
+  const [showError, setShowError] = useState<string | undefined>(undefined);
+
   const handleWithdrawButton = async (): Promise<void> => {
     const response = await withdrawMoney(inputMoney);
-    setAccountBalance(response.valorAtualConta);
+    if (response?.message) {
+      setShowError(response.message);
+    } else {
+      setAccountBalance(response.valorAtualConta);
+    }
   };
 
   const handleDepositButton = async (): Promise<void> => {
@@ -43,6 +51,10 @@ function AccountPage(): React.ReactElement {
     if (currentTab === 'sell') {
       setActionButton(EActionButton.Sell);
     }
+  };
+
+  const handleOnCloseError = (): void => {
+    setShowError(undefined);
   };
 
   useEffect(() => {
@@ -73,9 +85,15 @@ function AccountPage(): React.ReactElement {
           }}
         >
           <Tabs onChangeTab={onChangeTab} />
+          {showError && (
+            <AlertError
+              message={showError}
+              onCloseButton={handleOnCloseError}
+            />
+          )}
           <TitlePage text={CONSTANTS.texts.account.title} />
           <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
-            R$ {accountBalance}
+            R$ {roundTwoDecimals(accountBalance)}
           </h2>
           <div
             style={{

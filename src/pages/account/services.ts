@@ -12,14 +12,19 @@ export const depositMoney = async (value: number): Promise<IAccountBalance> => {
   const accountBalance = await getClient().post(`${endpoint}/deposit`, {
     value,
   });
+
   return accountBalance.data;
 };
 
 export const withdrawMoney = async (
   value: number
 ): Promise<IAccountBalance> => {
-  const accountBalance = await getClient().post(`${endpoint}/withdraw`, {
-    value,
-  });
-  return accountBalance.data;
+  try {
+    const accountBalance = await getClient().post(`${endpoint}/withdraw`, {
+      value,
+    });
+    return accountBalance.data;
+  } catch (error) {
+    return error;
+  }
 };

@@ -16,13 +16,21 @@ export const fetchAssetById = async (id: number): Promise<IAssetIdResponse> => {
 export const sellAssetClient = async (
   request: IWalletSellBodyRequest
 ): Promise<IWalletSellBodyResponse> => {
-  const response = await getClient().post(CONSTANTS.endpoints.sell, request);
-  return response;
+  try {
+    const response = await getClient().post(CONSTANTS.endpoints.sell, request);
+    return response;
+  } catch (error: unknown) {
+    return error as IWalletSellBodyResponse;
+  }
 };
 
 export const buyAssetClient = async (
   request: IWalletBuyBodyRequest
 ): Promise<IWalletBuyBodyResponse> => {
-  const response = await getClient().post(CONSTANTS.endpoints.buy, request);
-  return response;
+  try {
+    const response = await getClient().post(CONSTANTS.endpoints.buy, request);
+    return response;
+  } catch (error: unknown) {
+    return error as IWalletBuyBodyResponse;
+  }
 };
