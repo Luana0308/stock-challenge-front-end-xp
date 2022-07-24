@@ -10,6 +10,7 @@ import { Button } from '../../components/Button';
 import { EActionButton } from './types';
 import TitlePage from '../../components/TitlePage';
 import { CONSTANTS } from '../../utils/constants';
+import Loader from '../../components/Loader';
 
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
@@ -58,57 +59,61 @@ function AccountPage(): React.ReactElement {
   return (
     <main style={{ backgroundColor: '#f8f9fa', height: '100vh' }}>
       <Navbar />
-      <Card
-        style={{
-          padding: '8px',
-          marginTop: '32px',
-          height: '50%',
-          width: '70%',
-          left: 0,
-          right: 0,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-      >
-        <Tabs onChangeTab={onChangeTab} />
-        <TitlePage text={CONSTANTS.texts.account.title} />
-        <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
-          R$ {accountBalance}
-        </h2>
-        <div
+      {accountBalance ? (
+        <Card
           style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
+            padding: '8px',
+            marginTop: '32px',
+            height: '50%',
+            width: '70%',
+            left: 0,
+            right: 0,
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
         >
-          <div style={{ width: '30%' }}>
-            <InputText
-              onChange={handleInputChange}
-              type="number"
-              leftIcon={leftInputIcon}
-              placeholder={
+          <Tabs onChangeTab={onChangeTab} />
+          <TitlePage text={CONSTANTS.texts.account.title} />
+          <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
+            R$ {accountBalance}
+          </h2>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <div style={{ width: '30%' }}>
+              <InputText
+                onChange={handleInputChange}
+                type="number"
+                leftIcon={leftInputIcon}
+                placeholder={
+                  currentButton === EActionButton.Buy
+                    ? CONSTANTS.texts.account.placeHolderDeposit
+                    : CONSTANTS.texts.account.placeHolderWithdraw
+                }
+                showRigthIcon={false}
+              />
+            </div>
+
+            <Button
+              onClick={
                 currentButton === EActionButton.Buy
-                  ? CONSTANTS.texts.account.placeHolderDeposit
-                  : CONSTANTS.texts.account.placeHolderWithdraw
+                  ? handleDepositButton
+                  : handleWithdrawButton
               }
-              showRigthIcon={false}
+              type="button"
+              title={CONSTANTS.texts.account.confirmButton}
             />
           </div>
-
-          <Button
-            onClick={
-              currentButton === EActionButton.Buy
-                ? handleDepositButton
-                : handleWithdrawButton
-            }
-            type="button"
-            title={CONSTANTS.texts.account.confirmButton}
-          />
-        </div>
-      </Card>
+        </Card>
+      ) : (
+        <Loader />
+      )}
     </main>
   );
 }

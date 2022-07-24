@@ -5,6 +5,7 @@ import Box from '../../components/Box';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import InputText from '../../components/InputText';
+import Loader from '../../components/Loader';
 import Navbar from '../../components/NavBar';
 import TitlePage from '../../components/TitlePage';
 import { IAsset } from '../../types';
@@ -90,7 +91,7 @@ function WalletPage(): React.ReactElement {
               </div>
             </Card>
           ) : (
-            <p>loader</p>
+            <Loader />
           )}
         </div>
       </Box>

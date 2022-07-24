@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
 import { Card } from '../../components/Card';
+import Loader from '../../components/Loader';
 import Navbar from '../../components/NavBar';
 import TitlePage from '../../components/TitlePage';
 import { IAsset } from '../../types';
@@ -52,7 +53,7 @@ function AssetsPage(): React.ReactElement {
     <main style={{ backgroundColor: '#f8f9fa' }}>
       <Navbar />
       <TitlePage text="Minhas Ações" />
-      {myAssets && (
+      {myAssets ? (
         <Box width={60} minWidth={540} margin="2% 20% 4% 20%">
           <Card>
             <AssetsList
@@ -62,9 +63,11 @@ function AssetsPage(): React.ReactElement {
             />
           </Card>
         </Box>
+      ) : (
+        <Loader />
       )}
       <TitlePage text="Açoes da Invest Money" />
-      {assets && (
+      {assets ? (
         <Box width={60} minWidth={540} margin="2% 20% 4% 20%">
           <Card>
             <AssetsList
@@ -74,6 +77,8 @@ function AssetsPage(): React.ReactElement {
             />
           </Card>
         </Box>
+      ) : (
+        <Loader />
       )}
     </main>
   );
