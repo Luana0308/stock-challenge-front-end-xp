@@ -11,4 +11,12 @@ export const CONSTANTS = {
     buy: 'investments/buy',
     myAsset: 'assets/client',
   },
+  texts: {
+    account: {
+      title: 'Saldo Disponivel',
+      confirmButton: 'Confirmar',
+      placeHolderDeposit: 'Valor de Deposito:',
+      placeHolderWithdraw: 'Valor de Saque',
+    },
+  },
 };

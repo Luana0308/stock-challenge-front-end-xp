@@ -9,6 +9,7 @@ import Tabs from '../../components/Tab';
 import { Button } from '../../components/Button';
 import { EActionButton } from './types';
 import { TitlePage } from '../../components/Title/styles';
+import { CONSTANTS } from '../../utils/constants';
 
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
@@ -18,8 +19,6 @@ function AccountPage(): React.ReactElement {
   const [currentButton, setActionButton] = useState<EActionButton>(
     EActionButton.Buy
   );
-  const myBalance = 'Saldo Disponivel';
-
   const handleWithdrawButton = async (): Promise<void> => {
     const response = await withdrawMoney(inputMoney);
     setAccountBalance(response.valorAtualConta);
@@ -72,7 +71,7 @@ function AccountPage(): React.ReactElement {
         }}
       >
         <Tabs onChangeTab={onChangeTab} />
-        <TitlePage>{myBalance}</TitlePage>
+        <TitlePage>{CONSTANTS.texts.account.title}</TitlePage>
         <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
           R$ {accountBalance}
         </h2>
@@ -92,8 +91,8 @@ function AccountPage(): React.ReactElement {
               leftIcon={leftInputIcon}
               placeholder={
                 currentButton === EActionButton.Buy
-                  ? 'Valor de Deposito:'
-                  : 'Valor de Saque'
+                  ? CONSTANTS.texts.account.placeHolderDeposit
+                  : CONSTANTS.texts.account.placeHolderWithdraw
               }
               showRigthIcon={false}
             />
@@ -106,7 +105,7 @@ function AccountPage(): React.ReactElement {
                 : handleWithdrawButton
             }
             type="button"
-            title="Confirmar"
+            title={CONSTANTS.texts.account.confirmButton}
           />
         </div>
       </Card>

@@ -1,9 +1,7 @@
-import { Title } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
-import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import Navbar from '../../components/NavBar';
 import TitlePages from '../../components/Title';
