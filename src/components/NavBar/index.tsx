@@ -5,12 +5,8 @@ function Navbar(): React.ReactElement {
   return (
     <Nav>
       <NavMenu>
-        <NavLink to="/assets" activeStyle>
-          Inicio
-        </NavLink>
-        <NavLink to="/account" activeStyle>
-          Deposito
-        </NavLink>
+        <NavLink to="/assets">Inicio</NavLink>
+        <NavLink to="/account">Minha Conta</NavLink>
       </NavMenu>
       <NavBtn>
         <NavBtnLink to="/">Logout</NavBtnLink>

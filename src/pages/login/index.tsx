@@ -14,6 +14,7 @@ import Loader from '../../components/Loader';
 import { Card } from '../../components/Card';
 import InputText from '../../components/InputText';
 import { Button } from '../../components/Button';
+import TitlePages from '../../components/Title';
 
 function LoginPage(): React.ReactElement {
   const [email, setEmail] = useState('');
@@ -29,6 +30,7 @@ function LoginPage(): React.ReactElement {
   const leftInputIcon = <PersonOutlineIcon color="action" />;
   const leftPasswordIcon = <LockOpenIcon color="action" />;
   const rigthInputIcon = <ErrorOutlineIcon sx={{ color: 'red' }} />;
+  const titleLogin = 'Invest Money';
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,7 +72,7 @@ function LoginPage(): React.ReactElement {
       <ContentForm>
         <Card style={{ marginTop: '40%', minWidth: '70%' }}>
           <form>
-            <h1>login</h1>
+            <TitlePages>{titleLogin}</TitlePages>
             <InputText
               type="email"
               placeholder="digite seu email"

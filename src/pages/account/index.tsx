@@ -1,14 +1,24 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { Card } from '@mui/material';
 import { getClientStorage } from '../../utils/localStorage';
-import { CONSTANTS } from '../../utils/constants';
 import { depositMoney, fetchAccounClient, withdrawMoney } from './services';
 import Navbar from '../../components/NavBar';
+import InputText from '../../components/InputText';
+import Tabs from '../../components/Tab';
+import { Button } from '../../components/Button';
+import { EActionButton } from './types';
+import { TitlePage } from '../../components/Title/styles';
 
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
   const [inputMoney, setInputMoney] = useState<number>(0);
   const id = getClientStorage()?.id;
+  const leftInputIcon = <AttachMoneyIcon color="action" />;
+  const [currentButton, setActionButton] = useState<EActionButton>(
+    EActionButton.Buy
+  );
+  const myBalance = 'Saldo Disponivel';
 
   const handleWithdrawButton = async (): Promise<void> => {
     const response = await withdrawMoney(inputMoney);
@@ -26,6 +36,15 @@ function AccountPage(): React.ReactElement {
     setInputMoney(Number(value));
   };
 
+  const onChangeTab = (currentTab: string): void => {
+    if (currentTab === 'buy') {
+      setActionButton(EActionButton.Buy);
+    }
+    if (currentTab === 'sell') {
+      setActionButton(EActionButton.Sell);
+    }
+  };
+
   useEffect(() => {
     const getFetchClient = async (): Promise<void> => {
       if (id) {
@@ -38,23 +57,59 @@ function AccountPage(): React.ReactElement {
   }, [id]);
 
   return (
-    <main>
+    <main style={{ backgroundColor: '#f8f9fa', height: '100vh' }}>
       <Navbar />
-      <h1>Estou na pagina de deposito e saque da conta</h1>
-      <p>Meu saldo</p>
-      <p>{accountBalance}</p>
-      <input onChange={handleInputChange} type="number" placeholder="valor" />
-      <button type="button" onClick={handleWithdrawButton}>
-        Retirada
-      </button>
-      <button onClick={handleDepositButton} type="button">
-        Deposito
-      </button>
-      <br />
-      <Link to={CONSTANTS.routes.asset}>
-        <button type="button">Voltar</button>
-      </Link>
-      <button type="button">Confirmar</button>
+      <Card
+        style={{
+          padding: '8px',
+          marginTop: '32px',
+          height: '50%',
+          width: '70%',
+          left: 0,
+          right: 0,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        <Tabs onChangeTab={onChangeTab} />
+        <TitlePage>{myBalance}</TitlePage>
+        <h2 style={{ textAlign: 'center', color: '#3a5a40' }}>
+          R$ {accountBalance}
+        </h2>
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ width: '30%' }}>
+            <InputText
+              onChange={handleInputChange}
+              type="number"
+              leftIcon={leftInputIcon}
+              placeholder={
+                currentButton === EActionButton.Buy
+                  ? 'Valor de Deposito:'
+                  : 'Valor de Saque'
+              }
+              showRigthIcon={false}
+            />
+          </div>
+
+          <Button
+            onClick={
+              currentButton === EActionButton.Buy
+                ? handleDepositButton
+                : handleWithdrawButton
+            }
+            type="button"
+            title="Confirmar"
+          />
+        </div>
+      </Card>
     </main>
   );
 }
