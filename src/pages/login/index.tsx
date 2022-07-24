@@ -54,7 +54,7 @@ function LoginPage(): React.ReactElement {
       setLoginError(true);
       setIsLoading(false);
     }
-    if (result?.token && result?.id) {
+    if (result.token && result.id) {
       setClientResponse(result);
     }
   };

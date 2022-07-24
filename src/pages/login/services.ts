@@ -1,5 +1,9 @@
 import { getClient } from '../../services/client';
-import { IRequestLoginInput, IRequestClientResponse } from './types';
+import {
+  IRequestLoginInput,
+  IRequestClientResponse,
+  IRequestClientResponseError,
+} from './types';
 
 const loginEndpoint = '/login';
 
@@ -12,6 +16,6 @@ export const requestLogin = async (
     const response = await getClient().post(loginEndpoint, { email, password });
     return response.data;
   } catch (error: unknown) {
-    return { error: error as Error };
+    return { error: error as IRequestClientResponseError };
   }
 };
