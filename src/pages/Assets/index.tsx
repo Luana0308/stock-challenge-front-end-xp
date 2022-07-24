@@ -4,6 +4,7 @@ import AssetsList from '../../components/AssetsList';
 import Box from '../../components/Box';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
+import Navbar from '../../components/NavBar';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 import { getClientStorage } from '../../utils/localStorage';
@@ -49,6 +50,7 @@ function AssetsPage(): React.ReactElement {
 
   return (
     <main style={{ backgroundColor: '#f8f9fa' }}>
+      <Navbar />
       <h2>Minhas ações</h2>
       {myAssets && (
         <Box width={60} minWidth={540}>

@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import ItemAssetsList from '../../components/ItemAssetsList';
+import Navbar from '../../components/NavBar';
 import { IAsset } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 import { buyAssetClient, fetchAssetById, sellAssetClient } from './service';
@@ -45,6 +46,7 @@ function WalletPage(): React.ReactElement {
 
   return (
     <main>
+      <Navbar />
       <h1>Estou na pagina de comprar ou vende açao especifica</h1>
       {asset && <ItemAssetsList asset={asset} />}
       <input

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getClientStorage } from '../../utils/localStorage';
 import { CONSTANTS } from '../../utils/constants';
 import { depositMoney, fetchAccounClient, withdrawMoney } from './services';
+import Navbar from '../../components/NavBar';
 
 function AccountPage(): React.ReactElement {
   const [accountBalance, setAccountBalance] = useState<number>(0);
@@ -38,6 +39,7 @@ function AccountPage(): React.ReactElement {
 
   return (
     <main>
+      <Navbar />
       <h1>Estou na pagina de deposito e saque da conta</h1>
       <p>Meu saldo</p>
       <p>{accountBalance}</p>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AccountPage from '../account';
-import Home from '../home';
 import AssetsPage from '../Assets';
 import LoginPage from '../login';
 import WalletPage from '../wallet';
