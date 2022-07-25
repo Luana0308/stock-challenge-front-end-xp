@@ -35,10 +35,13 @@ function WalletPage(): React.ReactElement {
 
   const handleOnClickSell = async (): Promise<void> => {
     if (asset) {
-      await sellAssetClient({
+      const response = await sellAssetClient({
         idAsset: asset.id,
         quantityAsset: sellInputValue,
       });
+      if (response?.message) {
+        setShowError(response.message);
+      }
     }
   };
   const handleOnClickBuy = async (): Promise<void> => {

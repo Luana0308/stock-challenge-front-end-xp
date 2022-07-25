@@ -46,6 +46,13 @@
        npm install
        npm start
 
+  Para rodar com o Docker:
+      npm install
+      garantir que o docker esteja em execução
+      npm run docker:build
+      npm run docker:run
+
+
   <br />
   </details>
 
@@ -192,8 +199,10 @@ https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitiz
 <br />
 </details>
 
-
-https://flaviocopes.com/axios-send-authorization-header/
+<details>
+  <summary><strong>Outras Referencias</strontng></summary>
+ 
+ https://flaviocopes.com/axios-send-authorization-header/
 
 https://stackoverflow.com/questions/43051291/attach-authorization-header-for-all-axios-requests
 
@@ -201,5 +210,11 @@ https://www.digitalocean.com/community/tutorials/react-axios-react
 
 https://www.angularfix.com/2022/01/importing-images-in-typescript-react.html
 
-https://www.npmjs.com/package/react-loading
+https://www.npmjs.com/package/react-loading   
+
+<br />
+</details>
+
+
+
 

@@ -25,7 +25,9 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "docker:build": "docker build -t xp-front-luana .",
+    "docker:run": "docker run -dp 3000:3000 xp-front-luana"
   },
   "eslintConfig": {
     "extends": [
