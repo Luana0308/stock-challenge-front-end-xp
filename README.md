@@ -6,7 +6,10 @@
 
 <details>
   <summary><strong>O que é o projeto?</strong></summary>
-     
+  
+  O projeto é uma aplicação FrontEnd de um site de investimentos, possui a tela de login, a tela de ações com as ações da Invest Money e as ações do usuario, e a tela de conta do usuario. 
+
+  Todo o projeto é conectado com o uma API REST e toda alteração realizada na aplicação também é alterado no banco de dados.  
 
 <br />
 </details>
@@ -33,13 +36,29 @@
 
   <details>
     <summary><strong>Rodando o projeto localmente</strong></summary>
+  
+  Para rodar o projeto localmente faça o git clone da aplicação: 
 
+      git@github.com:Luana0308/stock-challenge-front-end-xp.git
+
+  No terminal:
+
+       npm install
+       npm start
 
   <br />
   </details>
 
   <details>
     <summary><strong>Deploy do Projeto</strong></summary>
+
+  O projeto teve o deploy realizado no heroku, com docker para que pudesse sempre manter a aplicação ativa enquanto estivesse rodando uma nova action no gitHub. 
+
+  https://stock-challenge-front-end-xp.herokuapp.com/
+
+    Para fazer login: 
+      e-mail: luana@gmail.com
+      senha: 123456
 
 
   <br />
@@ -48,6 +67,7 @@
   <details>
     <summary><strong>Gif do Projeto</strong></summary>
 
+  ![](./src//images/stieInvestMoney.gif)
 
   <br />
   </details>
@@ -59,35 +79,42 @@
 
 <details>
   <summary><strong>Arquitetura Utilizada</strong></summary>
-     
+    
+  O projeto foi estruturado com pastas separadas por funções, por exemplo dentro da pasta borão tem o index, o style e o type. Utilizei essa forma pois quando for necessario mexer em um compoente tudo está dentro da mesma pasta falicitando assim a busca.
+
+  Na minha pasta SRC eu dividi as por paginas e por compoenentes além de pastas auxiliares que poderiam ser utilizadas por toda a aplicação.  
+
+  Sites que utilizei para consulta para is escrevendo a minha aplicação:
+
+  https://alexkondov.com/tao-of-react/
+
+  https://blog.openreplay.com/react-architecture-patterns-for-your-projects
 
 <br />
 </details>
 
 <details>
-  <summary><strong>Porque utilizei o React</strong></summary>
-     
+  <summary><strong>Porque utilizei o React e o TypeScript</strong></summary>
+
+  O React é um framework que possibilita de forma pratica construir as interfaces para o usuario, e com a compentização e os estados é possivel reutilizar o codigo em varias partes. 
+  
+  O typescript foi utilizado como forma de detectar os erros durante o desenvolvimento do codigo, e com a tipagem correta, diminui os erros que podem acontecer durante a aplicação. 
+
 
 <br />
 </details>
 
 <details>
-  <summary><strong>Porque utilizei o TypeScript</strong></summary>
-     
-
-<br />
-</details>
-
-<details>
-  <summary><strong>Porque utilizei o styled-components</strong></summary>
-     
-
-<br />
-</details>
-
-<details>
-  <summary><strong>Porque utilizei a Padronização de lint</strong></summary>
-     
+  <summary><strong>Dificuldades Superadas</strong></summary>
+  
+  - Entender as telas propostas e como iria desenvolver o código
+  - Fazer o setup da aplicação
+  - Fazer o deploy da aplicação no heroku
+  - Fazer todo o projeto componentizado para que pudesse ser reutlizado
+  - Fazer a conexão com o a API do BackEnd
+  - Corrigir o problema de Cors - para corrigir eu tive que desabilitar no BackEnd
+  - Passar o token pelas rotas 
+  - Estilizar com o styled-components 
 
 <br />
 </details>
