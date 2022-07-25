@@ -90,6 +90,8 @@
   O projeto foi estruturado com pastas separadas por funções, por exemplo dentro da pasta borão tem o index, o style e o type. Utilizei essa forma pois quando for necessario mexer em um compoente tudo está dentro da mesma pasta falicitando assim a busca.
 
   Na minha pasta SRC eu dividi as por paginas e por compoenentes além de pastas auxiliares que poderiam ser utilizadas por toda a aplicação.  
+  
+  No projeto eu criei uma pipeline utilizando o gitHub actions e o heroku e clean DB, a cada commit realizado na branchMain, automaticamente uma nova versão era deployada no ambiente de produçao.
 
   Sites que utilizei para consulta para is escrevendo a minha aplicação:
 
@@ -121,7 +123,9 @@
   - Fazer a conexão com o a API do BackEnd
   - Corrigir o problema de Cors - para corrigir eu tive que desabilitar no BackEnd
   - Passar o token pelas rotas 
-  - Estilizar com o styled-components 
+  - Estilizar com o styled-components
+  - pipeline do GitHub Actions 
+  - CI/CD
 
 <br />
 </details>
